@@ -1,0 +1,33 @@
+spring:
+  mvc:
+    static-path-pattern: /**
+    view:
+      suffix: .jsp
+  devtools:
+    restart:
+      enabled: true
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123
+    url: jdbc:mysql://114.55.92.94:3306/aoyo
+  redis:
+    host: localhost
+    port: 6379
+    password: 123
+server:
+  jsp-servlet:
+    init-parameters:
+      development: true
+  port: 8087
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    lazy-loading-enabled: false
+  type-aliases-package: com.example.jiangnan.pojo
+logging:
+  level:
+    com.example.jiangnan.mapper: debug
