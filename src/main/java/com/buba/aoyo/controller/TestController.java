@@ -4,6 +4,6 @@ public class TestController {
     public static void main(String[] args) {
         System.out.println("xiaojiba");
         System.out.println("xiaojiba");
-        System.out.println("123qwedd");
+        System.out.println("banana");
     }
 }
