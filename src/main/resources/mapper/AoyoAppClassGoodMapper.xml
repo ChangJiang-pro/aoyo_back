@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.buba.aoyo.dao.AoyoAppClassGoodsDao">
+    <select id="findAllByAppClassId" resultType="AoyoAppClassGoods">
+      select * from aoyo_app_class_goods where appclass_id = #{appClassId}
+    </select>
+</mapper>
