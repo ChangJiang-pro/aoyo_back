@@ -1,6 +1,6 @@
-package com.buba.aoyo.dao;
+package com.buba.aoyo.mapper;
 
-import com.buba.aoyo.entity.AoyoCustom;
+import com.buba.aoyo.pojo.AoyoCustom;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

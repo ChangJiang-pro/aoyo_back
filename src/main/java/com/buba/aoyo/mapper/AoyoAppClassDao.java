@@ -1,6 +1,6 @@
-package com.buba.aoyo.dao;
+package com.buba.aoyo.mapper;
 
-import com.buba.aoyo.entity.AoyoAppClass;
+import com.buba.aoyo.pojo.AoyoAppClass;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

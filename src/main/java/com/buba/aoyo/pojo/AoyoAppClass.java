@@ -1,9 +1,10 @@
-package com.buba.aoyo.entity;
+package com.buba.aoyo.pojo;
 
 
 import lombok.Data;
 
 import java.util.Date;
+
 @Data
 public class AoyoAppClass {
   private long appClassId;

@@ -1,8 +1,8 @@
 package com.buba.aoyo.controller;
 
-import com.buba.aoyo.dao.AoyoAppClassGoodsDao;
-import com.buba.aoyo.entity.AoyoAppClassGoods;
-import com.buba.aoyo.entity.AoyoAppClassGoodsFind;
+import com.buba.aoyo.mapper.AoyoAppClassGoodsDao;
+import com.buba.aoyo.pojo.AoyoAppClassGoods;
+import com.buba.aoyo.pojo.AoyoAppClassGoodsFind;
 import com.buba.aoyo.utils.JsonData;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

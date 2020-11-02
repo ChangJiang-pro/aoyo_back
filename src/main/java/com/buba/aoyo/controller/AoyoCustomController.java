@@ -1,7 +1,7 @@
 package com.buba.aoyo.controller;
 
-import com.buba.aoyo.dao.AoyoCustomDao;
-import com.buba.aoyo.entity.AoyoCustom;
+import com.buba.aoyo.mapper.AoyoCustomDao;
+import com.buba.aoyo.pojo.AoyoCustom;
 import com.buba.aoyo.utils.JsonData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;

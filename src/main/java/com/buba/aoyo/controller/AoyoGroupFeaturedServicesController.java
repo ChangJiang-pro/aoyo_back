@@ -1,7 +1,7 @@
 package com.buba.aoyo.controller;
 
-import com.buba.aoyo.dao.AoyoGroupFeaturedServicesDao;
-import com.buba.aoyo.entity.AoyoGroupFeaturedServices;
+import com.buba.aoyo.mapper.AoyoGroupFeaturedServicesDao;
+import com.buba.aoyo.pojo.AoyoGroupFeaturedServices;
 import com.buba.aoyo.utils.JsonData;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

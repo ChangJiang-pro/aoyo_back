@@ -1,7 +1,8 @@
-package com.buba.aoyo.entity;
+package com.buba.aoyo.pojo;
+
+import lombok.Data;
 
 import java.io.Serializable;
-import lombok.Data;
 import java.util.Date;
 
 @Data

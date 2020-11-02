@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.buba.aoyo.dao.AoyoCustomDao">
-    <select id="findById" parameterType="Integer" resultType="AoyoCustom">
+<mapper namespace="com.buba.aoyo.mapper.AoyoCustomDao">
+    <select id="findById" parameterType="Integer" resultType="aoyoCustom">
         select custom_id, nickname,name, photo, mobile, wx_pub_openid,wx_unionid, create_time, update_time,delete_desc, status_id, delete_flag, wx_applet_openid, custom_origin_id from aoyo_custom where custom_id=#{customId}
     </select>
-    <select id="findAllURL" resultType="AoyoCustom">
+    <select id="findAllURL" resultType="aoyoCustom">
         select custom_id,photo from aoyo_custom
     </select>
 </mapper>

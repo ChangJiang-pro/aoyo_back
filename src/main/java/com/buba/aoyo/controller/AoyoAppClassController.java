@@ -2,8 +2,8 @@ package com.buba.aoyo.controller;
 
 import com.buba.aoyo.config.TreeJson;
 import com.buba.aoyo.config.TreeNodeBuilder;
-import com.buba.aoyo.dao.AoyoAppClassDao;
-import com.buba.aoyo.entity.AoyoAppClass;
+import com.buba.aoyo.mapper.AoyoAppClassDao;
+import com.buba.aoyo.pojo.AoyoAppClass;
 import com.buba.aoyo.utils.JsonData;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -7,18 +7,13 @@ import com.buba.aoyo.response.BaseResponse;
 import com.buba.aoyo.service.UserService;
 import com.buba.aoyo.utils.*;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RequestMapping("user")

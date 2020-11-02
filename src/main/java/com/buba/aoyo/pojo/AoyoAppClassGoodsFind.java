@@ -1,4 +1,4 @@
-package com.buba.aoyo.entity;
+package com.buba.aoyo.pojo;
 
 import lombok.Data;
 
