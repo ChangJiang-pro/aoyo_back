@@ -6,4 +6,19 @@
     <select id="getHotCarList" resultType="carBrandHot">
         select * from aoyo_car_brand_hot
     </select>
+    <select id="getCarList" resultType="carBrand">
+        select * from aoyo_car_brand
+    </select>
+    <select id="getCarListByLetter" resultType="carBrand">
+        select *from aoyo_car_brand where car_brand_py_first_letter=#{carBrandPyFirstLetter}
+    </select>
+    <select id="searchCarList" resultType="carBrand">
+        select car_brand_id,car_brand_name
+        from aoyo_car_brand
+        <where>
+            <if test="name !=null and name !='' ">
+                car_brand_name like "%${name}%"
+            </if>
+        </where>
+    </select>
 </mapper>

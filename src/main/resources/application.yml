@@ -10,11 +10,11 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: admin123
-    url: jdbc:mysql://114.55.92.94:3306/aoyou
+    url: jdbc:mysql://114.55.92.94:3306/aoyou?autoReconnect=true&useSSL=false&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
   redis:
-    host: localhost
+    host: 114.55.92.94
     port: 6379
-    password: 123
+    password:
 server:
   jsp-servlet:
     init-parameters:
