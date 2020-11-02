@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.buba.aoyo.mapper.ImgMapper">
+
+    <!-- /*查询轮播图*/
+    List<AoyoCommodityImg> getCarouselList();-->
+    <select id="getCarouselList" resultType="AoyoCommodityImg">
+        select commodity_img_url  from aoyo_commodity_img where commodity_img_status=1
+    </select>
+
+    <!--/*首页功能按钮*/
+    List<AoyoGroupFeaturedServices> getFunctionButtonList();-->
+    <select id="getFunctionButtonList" resultType="AoyoGroupFeaturedServices">
+        select *  from aoyo_group_featured_services where featured_services_isenable=1
+    </select>
+
+    <!--/*首页功能按钮跳转*/
+    List<AoyoWorkOrderServe> getWorkServe();-->
+    <select id="getWorkServe" resultType="AoyoWorkOrderServe">
+        select *  from aoyo_work_order_serve
+    </select>
+
+    <!-- /*展示优惠券*/
+    List<AoyoCoupon> receiveCoupon();-->
+    <select id="receiveCoupon" resultType="AoyoCoupon">
+        select *  from aoyo_coupon
+    </select>
+</mapper>
