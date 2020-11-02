@@ -15,4 +15,6 @@ public class AoyoGroupFeaturedServices {
   private Date createTime;
   private String functionButtonUrl;
   private String jumpPath;
+  private Integer groupId;
+  private Integer groupFeaturedId;
 }
