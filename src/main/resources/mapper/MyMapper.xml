@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.buba.aoyo.mapper.MyMapper">
+    <select id="getCustomAllowReceiveCouponList" resultType="aoyoCoupon">
+        select coupon_id,coupon_status_id,coupon_amt,coupon_name,coupon_type_id,coupon_end_time,coupon_desc,coupon_minimum_amount from aoyo_coupon
+        where delete_flag=1
+    </select>
+    <!--更新优惠券库存-->
+    <update id="updateCoupon" >
+        update aoyo_coupon set coupon_total_count= coupon_total_count-1,coupon_status_id=2
+        where coupon_id=#{id}
+    </update>
+    <!--新增关系表-->
+    <insert id="insCouponCustom" parameterType="aoyoCustomCoupon">
+        insert into aoyo_custom_coupon
+        (custom_id, create_time, delete_flag,coupon_id,coupon_status_id)
+        values (#{customId},now(),1,#{id},1)
+    </insert>
+    <!--查询个人优惠券列表-->
+    <select id="getCouponListByStatus" resultType="aoyoCustomCoupon">
+        select
+        cc.coupon_status_id couponStatusId,c.coupon_desc couponDesc,c.coupon_name couponName,c.coupon_end_time couponEndTime,c.coupon_type_id couponTypeId,c.coupon_amt couponAmt,c.coupon_minimum_amount couponMinimumAmount
+        from aoyo_custom_coupon cc,aoyo_coupon c
+        where cc.coupon_id=c.coupon_id
+        and cc.coupon_status_id=#{id}
+    </select>
+</mapper>

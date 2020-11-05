@@ -40,14 +40,16 @@ public class DataBaseInterceptor implements HandlerInterceptor {
         if(handler instanceof HandlerMethod){//判断类型
 
             //在请求头中取出accessToken
-            String accessToken = request.getHeader("accessToken");
+            String accessToken = request.getHeader("Ltoken");
 
             if(StringUtils.isBlank(accessToken)){
-                BaseResponse baseResponse = new BaseResponse(StatusCode.Fail,
+                BaseResponse baseResponse = new BaseResponse(StatusCode.AccessTokenNotExist,
                         "用户身份验证失败，请重新登录后再试。");
+                System.out.println("用户身份验证失败，请重新登录后再试。");
                 //相应信息
                 commonService.print(response,baseResponse);
             }else {
+//                验证token
                 BaseResponse result = UserService.validateToken(accessToken);
                 if(Objects.equals(result.getCode(),StatusCode.Success.getCode())){
                     return true;

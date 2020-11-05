@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public AuthTokenModel authUserAndCreateToken(String mobile, String code) throws Exception{
-        AoyoCustom custom=selCustom(mobile,code);
+        AoyoCustom custom=selCustom(mobile);
         String resKey=Constant.REDIS_KEY+custom.getCustomId();
         if (custom != null){
             //失效掉以前仍然可以使用的accessToken
@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
-
+//    验证token
     @Override
     public BaseResponse validateToken(String accessToken) {
         BaseResponse response=new BaseResponse(StatusCode.Success);
@@ -94,9 +94,25 @@ public class UserServiceImpl implements UserService {
     }
 //    查询客户
     @Override
-    public AoyoCustom selCustom(String mobile,String code) {
+    public AoyoCustom selCustom(String mobile) {
         return customMapper.selCustom(mobile);
     }
+
+    @Override
+    public String authNickName(String nickName) {
+        return customMapper.authNickName(nickName);
+    }
+
+    @Override
+    public int wxLoginRegisterCustom(AoyoCustom aoyoCustom) {
+        return customMapper.wxLoginRegisterCustom(aoyoCustom);
+    }
+
+    @Override
+    public int wxLoginUpdateCustom(AoyoCustom aoyoCustom) {
+        return customMapper.wxLoginUpdateCustom(aoyoCustom);
+    }
+
     //    失效token
     public void invalidateByAccessToken(String accessToken,Integer id) {
         if (StringUtils.isNotBlank(accessToken)){
