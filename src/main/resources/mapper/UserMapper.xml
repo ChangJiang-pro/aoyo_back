@@ -6,4 +6,15 @@
     <select id="selCustom" resultType="aoyoCustom">
         select * from aoyo_custom where mobile=#{mobile}
     </select>
+    <select id="authNickName" resultType="string">
+        select mobile from aoyo_custom where nickname=#{nickName}
+    </select>
+    <insert id="wxLoginRegisterCustom" parameterType="aoyoCustom">
+        insert into aoyo_custom (nickname, mobile, create_time, status_id,delete_flag,custom_origin_id,wx_pub_openid,photo)
+        values (#{custom.nickname},#{custom.mobile},now(),1,1,0,#{custom.wxPubOpenid},#{custom.photo})
+    </insert>
+    <update id="wxLoginUpdateCustom" parameterType="aoyoCustom">
+        update aoyo_custom set  wx_pub_openid=#{custom.wxPubOpenid},photo=#{custom.photo}
+        where mobile=#{custom.mobile}
+    </update>
 </mapper>

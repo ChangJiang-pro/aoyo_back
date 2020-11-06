@@ -9,5 +9,11 @@ public interface UserService {
 
     BaseResponse validateToken(String accessToken);
 
-    AoyoCustom selCustom(String mobile,String code);
+    AoyoCustom selCustom(String mobile);
+
+    String authNickName(String nickName);
+
+    int wxLoginRegisterCustom(AoyoCustom aoyoCustom);
+
+    int wxLoginUpdateCustom(AoyoCustom aoyoCustom);
 }

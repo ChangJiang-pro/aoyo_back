@@ -6,10 +6,12 @@ import com.buba.aoyo.response.BaseResponse;
 import com.buba.aoyo.service.CarService;
 import com.buba.aoyo.utils.SendSms;
 import com.buba.aoyo.utils.StatusCode;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,12 +22,17 @@ public class CarController {
     private CarService carService;
 //    获取热门车品牌
     @RequestMapping("getHotCarList")
-    public BaseResponse getHotCarList(){
+    public BaseResponse getHotCarList(HttpServletRequest request){
         List<CarBrandHot> list=carService.getHotCarList();
-        if(list!=null){
-            return new BaseResponse(StatusCode.Success,list);
+        String accessToken = request.getHeader("Ltoken");
+        if(StringUtils.isBlank(accessToken)){
+            return new BaseResponse(StatusCode.AccessTokenNotExist);
         }else{
-            return new BaseResponse(StatusCode.Fail,"失败！");
+            if(list!=null){
+                return new BaseResponse(StatusCode.Success,list);
+            }else{
+                return new BaseResponse(StatusCode.Fail,"失败！");
+            }
         }
     }
 //    获取所有车品牌

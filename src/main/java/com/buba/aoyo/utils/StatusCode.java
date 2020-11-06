@@ -21,7 +21,8 @@ public enum StatusCode {
 
     LoginFail(100000,"登录失败！"),
     CurrUserHasNotPermission(100001,"当前用户没有权限访问该资源或者操作！"),
-    CurrUserNotLogin(100002,"当前用户没有登录，请先进行登录！");
+    CurrUserNotLogin(100002,"当前用户没有登录，请先进行登录！"),
+    BindPhone(100003,"绑定手机号");
 
     private Integer code;//响应码
     private String msg;//响应消息

@@ -139,7 +139,7 @@ public class EncryptUtil {
         String encryptStr=aesEncrypt(jsonStr,key);
         System.out.println("密文："+ encryptStr);
 
-        String srcInfo=aesDecrypt(encryptStr,key);
+        String srcInfo=aesDecrypt("SypBGIq1m19OU28dS3me/3JN/AtZtKLD8bqhHmLVWge3YWCotXvbz1FUOf3DP2GVqwtc/OtSy/waO9qxs6ZR7nVvJHbFD6i2I+dLGRPSYOJ2mmmV9pAZ8K3PyPBuiZDaptvAneIU+eHUjwhvl4B0Kw==",key);
         System.out.println("明文： "+ srcInfo);
     }
 
