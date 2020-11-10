@@ -21,26 +21,26 @@ public class OrderController {
     @RequestMapping("orderShow")
     @ResponseBody
     public BaseResponse orderShow() {
-        List< dingDanJiHe> coupon = orderService.orderShow();
-        System.out.println(coupon);
-        return new BaseResponse(200,"成功",coupon);
+        List< dingDanJiHe> orderShow = orderService.orderShow();
+        System.out.println(orderShow);
+        return new BaseResponse(200,"成功",orderShow);
     }
     /*订单已完成*/
     @RequestMapping("orderYiWanCheng")
     @ResponseBody
     public BaseResponse orderYiWanCheng() {
-        List< dingDanJiHe> coupon = orderService.orderYiWanCheng();
-        System.out.println(coupon);
-        return new BaseResponse(200,"成功",coupon);
+        List< dingDanJiHe> orderYiWanCheng = orderService.orderYiWanCheng();
+        System.out.println(orderYiWanCheng);
+        return new BaseResponse(200,"成功",orderYiWanCheng);
     }
 
     /*订单已待支付*/
     @RequestMapping("orderDaiZhiFu")
     @ResponseBody
     public BaseResponse orderDaiZhiFu() {
-        List< dingDanJiHe> coupon = orderService.orderDaiZhiFu();
-        System.out.println(coupon);
-        return new BaseResponse(200,"成功",coupon);
+        List< dingDanJiHe> orderDaiZhiFu = orderService.orderDaiZhiFu();
+        System.out.println(orderDaiZhiFu);
+        return new BaseResponse(200,"成功",orderDaiZhiFu);
     }
 
 
@@ -48,9 +48,9 @@ public class OrderController {
     @RequestMapping("orderJingXIngZhong")
     @ResponseBody
     public BaseResponse orderJingXIngZhong() {
-        List< dingDanJiHe> coupon = orderService.orderJingXIngZhong();
-        System.out.println(coupon);
-        return new BaseResponse(200,"成功",coupon);
+        List< dingDanJiHe> orderJingXIngZhong = orderService.orderJingXIngZhong();
+        System.out.println(orderJingXIngZhong);
+        return new BaseResponse(200,"成功",orderJingXIngZhong);
     }
 
 
@@ -58,9 +58,9 @@ public class OrderController {
     @RequestMapping("orderDaiPingJia")
     @ResponseBody
     public BaseResponse orderDaiPingJia() {
-        List< dingDanJiHe> coupon = orderService.orderDaiPingJia();
-        System.out.println(coupon);
-        return new BaseResponse(200,"成功",coupon);
+        List< dingDanJiHe> orderDaiPingJia = orderService.orderDaiPingJia();
+        System.out.println(orderDaiPingJia);
+        return new BaseResponse(200,"成功",orderDaiPingJia);
     }
 
 }
