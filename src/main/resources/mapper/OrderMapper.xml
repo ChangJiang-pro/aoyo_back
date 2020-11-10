@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.buba.aoyo.mapper.OrderMapper">
+
+
+  <!--  /*订单全查*/
+    List<dingDanJiHe> orderShow();-->
+    <select id="orderShow" resultType="dingDanJiHe">
+        select * from aoyo_order as der
+        LEFT JOIN aoyo_commodity as com on der.commodity_id=com.commodity_id
+        LEFT JOIN aoyo_custom as cus on der.custom_id=cus.custom_id
+        LEFT JOIN sys_group as gro on der.GROUP_ID=gro.GROUP_ID
+        LEFT JOIN aoyo_address as ads on der.address_id=ads.address_id
+    </select>
+
+    <!-- /*订单已完成*/
+    List<dingDanJiHe> orderYiWanCheng();-->
+    <select id="orderYiWanCheng" resultType="dingDanJiHe">
+        select * from aoyo_order as der
+        LEFT JOIN aoyo_commodity as com on der.commodity_id=com.commodity_id
+        LEFT JOIN aoyo_custom as cus on der.custom_id=cus.custom_id
+        LEFT JOIN sys_group as gro on der.GROUP_ID=gro.GROUP_ID
+        LEFT JOIN aoyo_address as ads on der.address_id=ads.address_id
+	    WHERE der.send_order_status=1
+    </select>
+
+    <!-- /*订单待支付*/
+    List<dingDanJiHe> orderDaiZhiFu();-->
+    <select id="orderDaiZhiFu" resultType="dingDanJiHe">
+        select * from aoyo_order as der
+        LEFT JOIN aoyo_commodity as com on der.commodity_id=com.commodity_id
+        LEFT JOIN aoyo_custom as cus on der.custom_id=cus.custom_id
+        LEFT JOIN sys_group as gro on der.GROUP_ID=gro.GROUP_ID
+        LEFT JOIN aoyo_address as ads on der.address_id=ads.address_id
+	    WHERE der.send_order_status=2
+    </select>
+
+    <!-- /*订单进行中*/
+   List<dingDanJiHe> orderJingXIngZhong();-->
+    <select id="orderJingXIngZhong" resultType="dingDanJiHe">
+        select * from aoyo_order as der
+        LEFT JOIN aoyo_commodity as com on der.commodity_id=com.commodity_id
+        LEFT JOIN aoyo_custom as cus on der.custom_id=cus.custom_id
+        LEFT JOIN sys_group as gro on der.GROUP_ID=gro.GROUP_ID
+        LEFT JOIN aoyo_address as ads on der.address_id=ads.address_id
+	    WHERE der.send_order_status=3
+    </select>
+
+    <!-- /*订单待支付*/
+   List<dingDanJiHe> orderDaiPingJia();-->
+    <select id="orderDaiPingJia" resultType="dingDanJiHe">
+        select * from aoyo_order as der
+        LEFT JOIN aoyo_commodity as com on der.commodity_id=com.commodity_id
+        LEFT JOIN aoyo_custom as cus on der.custom_id=cus.custom_id
+        LEFT JOIN sys_group as gro on der.GROUP_ID=gro.GROUP_ID
+        LEFT JOIN aoyo_address as ads on der.address_id=ads.address_id
+	    WHERE der.send_order_status=4
+    </select>
+</mapper>
