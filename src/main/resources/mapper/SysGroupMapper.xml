@@ -73,10 +73,10 @@
     </select>
    <!--门店商品详情-->
     <select id="findAll2" resultType="Mendian" parameterType="Mendian">
-      SELECT aoyo_commodity.commodity_id,aoyo_commodity.commodity_name,aoyo_commodity.commodity_selling_price,sys_group.GROUP_ID,sys_group.GROUP_NAME,aoyo_commodity_img.commodity_img_url,aoyo_commodity.type_id,aoyo_commodity_class.class_id from aoyo_commodity
+      SELECT aoyo_commodity.commodity_id,aoyo_commodity.commodity_name,aoyo_commodity.commodity_selling_price,sys_group.GROUP_ID,sys_group.GROUP_NAME,aoyo_commodity_img.commodity_img_url,aoyo_commodity.class_id,aoyo_commodity_class.class_id from aoyo_commodity
       LEFT JOIN sys_group on aoyo_commodity.group_id=sys_group.GROUP_ID
       LEFT JOIN aoyo_commodity_img on aoyo_commodity_img.commodity_id=aoyo_commodity.commodity_id
-      left join aoyo_commodity_class on aoyo_commodity_class.class_id=aoyo_commodity.type_id
+      left join aoyo_commodity_class on aoyo_commodity_class.class_id=aoyo_commodity.class_id
       <where>
         <if test="groupId!=null and groupId!=0">
              aoyo_commodity.group_id=#{groupId}
@@ -84,8 +84,8 @@
         <if test="commodityName!=null and commodityName!=''">
               and  aoyo_commodity.commodity_name like '%${commodityName}%'
         </if>
-          <if test="typeId!=null and typeId!=0">
-            and aoyo_commodity.type_id=#{typeId}
+          <if test="classId!=null and classId!=0">
+            and aoyo_commodity.class_id=#{classId}
           </if>
       </where>
     </select>
@@ -126,7 +126,7 @@ LEFT JOIN sys_group_type on sys_group_type.group_type_id=sys_group.group_type
 LEFT JOIN aoyo_group_technician on aoyo_group_technician.group_id=sys_group.group_id
 where sys_group.group_id=#{groupId}
     </select>
-    <!--商品帅选列表-->
+    <!--商品筛选列表-->
     <select id="findAll3" resultType="com.buba.aoyo.pojo.AoyoCommodityClass">
         select * from aoyo_commodity_class
     </select>

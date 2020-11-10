@@ -6,7 +6,6 @@ public class Mendian {
     private String commodityName;
     private double commoditySellingPrice;
     private String commodityImgUrl;
-    private Integer typeId;
     private Integer classId;
     private Integer commodityId;
 
@@ -39,20 +38,16 @@ public class Mendian {
         return commoditySellingPrice;
     }
 
-    public void setCommoditySellingPrice(double commoditySellingPrice) { this.commoditySellingPrice = commoditySellingPrice; }
+    public void setCommoditySellingPrice(double commoditySellingPrice) {
+        this.commoditySellingPrice = commoditySellingPrice;
+    }
 
     public String getCommodityImgUrl() {
         return commodityImgUrl;
     }
 
-    public void setCommodityImgUrl(String commodityImgUrl) { this.commodityImgUrl = commodityImgUrl; }
-
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setCommodityImgUrl(String commodityImgUrl) {
+        this.commodityImgUrl = commodityImgUrl;
     }
 
     public Integer getClassId() {
