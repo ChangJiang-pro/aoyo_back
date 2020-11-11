@@ -4,19 +4,11 @@ public class Mendian {
     private Integer groupId;
     private String groupName;
     private String commodityName;
-    private double commodityCostPrice;
+    private double commoditySellingPrice;
     private String commodityImgUrl;
+    private Integer classId;
+    private Integer commodityId;
 
-    @Override
-    public String toString() {
-        return "Mendian{" +
-                "groupId=" + groupId +
-                ", groupName='" + groupName + '\'' +
-                ", commodityName='" + commodityName + '\'' +
-                ", commodityCostPrice=" + commodityCostPrice +
-                ", commodityImgUrl='" + commodityImgUrl + '\'' +
-                '}';
-    }
 
     public Integer getGroupId() {
         return groupId;
@@ -42,12 +34,12 @@ public class Mendian {
         this.commodityName = commodityName;
     }
 
-    public double getCommodityCostPrice() {
-        return commodityCostPrice;
+    public double getCommoditySellingPrice() {
+        return commoditySellingPrice;
     }
 
-    public void setCommodityCostPrice(double commodityCostPrice) {
-        this.commodityCostPrice = commodityCostPrice;
+    public void setCommoditySellingPrice(double commoditySellingPrice) {
+        this.commoditySellingPrice = commoditySellingPrice;
     }
 
     public String getCommodityImgUrl() {
@@ -56,5 +48,21 @@ public class Mendian {
 
     public void setCommodityImgUrl(String commodityImgUrl) {
         this.commodityImgUrl = commodityImgUrl;
+    }
+
+    public Integer getClassId() {
+        return classId;
+    }
+
+    public void setClassId(Integer classId) {
+        this.classId = classId;
+    }
+
+    public Integer getCommodityId() {
+        return commodityId;
+    }
+
+    public void setCommodityId(Integer commodityId) {
+        this.commodityId = commodityId;
     }
 }

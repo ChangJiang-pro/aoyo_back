@@ -1,10 +1,6 @@
 package com.buba.aoyo.service;
 
-import com.buba.aoyo.pojo.AoyoGroupIndex;
-import com.buba.aoyo.pojo.Mendian;
-import com.buba.aoyo.pojo.SysGroup;
-import com.buba.aoyo.pojo.Xiangqing;
-import org.springframework.data.repository.query.Param;
+import com.buba.aoyo.pojo.*;
 
 import java.util.List;
 
@@ -16,4 +12,8 @@ public interface SysGroupService {
     Xiangqing findById(Integer groupId);
 
     Xiangqing findById2(Integer groupId);
+
+    List<AoyoCommodityClass> findAll3();
+
+    List<Shangpin> findAll4(Integer commodityId);
 }

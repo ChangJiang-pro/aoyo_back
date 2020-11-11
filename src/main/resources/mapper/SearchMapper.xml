@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.buba.aoyo.mapper.SearchMapper">
+
+    <select id="findAll" resultType="com.buba.aoyo.pojo.Mendian">
+        select aoyo_commodity.commodity_id,aoyo_commodity.commodity_name,aoyo_commodity.commodity_selling_price,aoyo_commodity_img.commodity_img_url
+        from aoyo_commodity
+        left join aoyo_commodity_img on aoyo_commodity_img.commodity_id=aoyo_commodity.commodity_id
+        where aoyo_commodity.commodity_name like '%${commodityName}%'
+            <if test="commoditySellingPrice == -1">
+            order by aoyo_commodity.commodity_selling_price
+            </if>
+            <if test="commoditySellingPrice == -2">
+            order by aoyo_commodity.commodity_selling_price desc
+            </if>
+    </select>
+
+</mapper>

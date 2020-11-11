@@ -2,10 +2,7 @@ package com.buba.aoyo.service.impl;
 
 
 import com.buba.aoyo.mapper.SysGroupMapper;
-import com.buba.aoyo.pojo.AoyoGroupIndex;
-import com.buba.aoyo.pojo.Mendian;
-import com.buba.aoyo.pojo.SysGroup;
-import com.buba.aoyo.pojo.Xiangqing;
+import com.buba.aoyo.pojo.*;
 import com.buba.aoyo.service.SysGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +22,6 @@ public class SysGroupServiceImpl implements SysGroupService {
 
     @Override
     public List<Mendian> findAll2(Mendian mendian) {
-
         return sysGroupMapper.findAll2(mendian);
     }
 
@@ -37,6 +33,16 @@ public class SysGroupServiceImpl implements SysGroupService {
     @Override
     public Xiangqing findById2(Integer groupId) {
         return sysGroupMapper.findById2(groupId);
+    }
+
+    @Override
+    public List<AoyoCommodityClass> findAll3() {
+        return sysGroupMapper.findAll3();
+    }
+
+    @Override
+    public List<Shangpin> findAll4(Integer commodityId) {
+        return sysGroupMapper.findAll4(commodityId);
     }
 
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.buba.aoyo.mapper.SysGroupMapper">
-
+    <!--门店首页-->
     <resultMap id="listShop" type="SysGroup">
         <id property="groupId" column="GROUP_ID"></id>
         <result property="areaName" column="area_name"></result>
@@ -36,10 +36,8 @@
             <result property="featuredServicesRemarks" column="featured_services_remarks"></result>
             <result property="deleteFlag" column="delete_flag"></result>
         </collection>
-
-
     </resultMap>
-    <!--门店首页-->
+
     <select id="findAll" resultMap="listShop">
     select street.`name` as street_name,area.`name` as area_name,city.`name` as city_name,province.`name` as province_name,address.group_address_details,
     sys_group.GROUP_NAME,sys_group.COUNTY_ID,type.GROUP_TYPE_NAME,sys_group.GROUP_ID as group_id,
@@ -75,21 +73,24 @@
     </select>
    <!--门店商品详情-->
     <select id="findAll2" resultType="Mendian" parameterType="Mendian">
-      SELECT aoyo_commodity.commodity_name,aoyo_commodity.commodity_cost_price,sys_group.GROUP_ID,sys_group.GROUP_NAME,aoyo_commodity_img.commodity_img_url from aoyo_commodity
+      SELECT aoyo_commodity.commodity_id,aoyo_commodity.commodity_name,aoyo_commodity.commodity_selling_price,sys_group.GROUP_ID,sys_group.GROUP_NAME,aoyo_commodity_img.commodity_img_url,aoyo_commodity.class_id,aoyo_commodity_class.class_id from aoyo_commodity
       LEFT JOIN sys_group on aoyo_commodity.group_id=sys_group.GROUP_ID
       LEFT JOIN aoyo_commodity_img on aoyo_commodity_img.commodity_id=aoyo_commodity.commodity_id
+      left join aoyo_commodity_class on aoyo_commodity_class.class_id=aoyo_commodity.class_id
       <where>
         <if test="groupId!=null and groupId!=0">
              aoyo_commodity.group_id=#{groupId}
         </if>
-
         <if test="commodityName!=null and commodityName!=''">
               and  aoyo_commodity.commodity_name like '%${commodityName}%'
         </if>
+          <if test="classId!=null and classId!=0">
+            and aoyo_commodity.class_id=#{classId}
+          </if>
       </where>
     </select>
 
-
+ <!--店铺图片+名称-->
  <select id="findById" resultType="com.buba.aoyo.pojo.Xiangqing">
  SELECT aoyo_group_index.img_url,sys_group.GROUP_ID,sys_group.GROUP_NAME from sys_group,aoyo_group_index where sys_group.group_id=#{groupId} and sys_group.GROUP_TYPE=aoyo_group_index.group_index_id
  </select>
@@ -114,7 +115,6 @@
         </collection>
     </resultMap>
 
-
     <select id="findById2" resultMap="xq">
     SELECT DISTINCT aoyo_group_index.img_url,sys_group.GROUP_ID,sys_group.GROUP_NAME,sys_group.GROUP_DESC,sys_group_address.group_address_details,aoyo_group_featured_services.featured_services_desc,sys_group_type.group_type_name,
     aoyo_group_technician.*from sys_group
@@ -125,8 +125,45 @@ LEFT JOIN aoyo_group_featured_services on aoyo_group_featured_services.featured_
 LEFT JOIN sys_group_type on sys_group_type.group_type_id=sys_group.group_type
 LEFT JOIN aoyo_group_technician on aoyo_group_technician.group_id=sys_group.group_id
 where sys_group.group_id=#{groupId}
-
+    </select>
+    <!--商品筛选列表-->
+    <select id="findAll3" resultType="com.buba.aoyo.pojo.AoyoCommodityClass">
+        select * from aoyo_commodity_class
     </select>
 
 
+    <!--商品详情-->
+    <resultMap id="sp" type="Shangpin">
+        <id property="commodityId" column="commodity_id"/>
+        <result property="commoditCommentContent" column="commodit_comment_content"/>
+        <result property="commodityName" column="commodity_name"/>
+        <result property="commoditySellingPrice" column="commodity_selling_price"/>
+        <result property="groupId" column="group_id"/>
+        <result property="commodityNumber" column="commodity_number"/>
+
+        <collection property="imgs" javaType="list" ofType="Imgs">
+            <id property="commodityId" column="commodity_id"/>
+            <result property="commodityImgUrl" column="commodity_img_url"/>
+        </collection>
+
+        <collection property="norms" javaType="list" ofType="AoyoCommodityNorms">
+            <id property="normsId" column="norms_id"/>
+            <result property="commodityId" column="commodity_id"/>
+            <result property="groupId" column="group_id"/>
+            <result property="classId" column="class_id"/>
+            <result property="normsName" column="norms_name"/>
+            <result property="normsValue" column="norms_value"/>
+            <result property="deleteFlag" column="delete_flag"/>
+        </collection>
+    </resultMap>
+
+    <select id="findAll4" resultMap="sp">
+    SELECT aoyo_commodity.commodity_id,aoyo_commodity_img.commodity_img_url,aoyo_commodity_norms.*,aoyo_commodity.commodity_name,aoyo_commodity.commodity_selling_price,aoyo_commodity.group_id,aoyo_commodity.commodity_number
+from aoyo_commodity
+LEFT JOIN aoyo_commodity_img on aoyo_commodity_img.commodity_id=aoyo_commodity.commodity_id
+LEFT JOIN aoyo_commodity_comment on aoyo_commodity_comment.commodity_id=aoyo_commodity.commodity_id
+LEFT JOIN aoyo_commodity_norms on aoyo_commodity_norms.commodity_id=aoyo_commodity.commodity_id
+where aoyo_commodity.commodity_id=#{commodityId}
+
+    </select>
 </mapper>
