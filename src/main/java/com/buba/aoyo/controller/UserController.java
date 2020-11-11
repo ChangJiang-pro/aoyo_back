@@ -49,7 +49,7 @@ public class UserController {
     public BaseResponse sendSMS(String mobile){
 //        生成四位随机数
         Integer num=(int)(Math.random()*9000)+1000;
-        //SendSms.sendMSM(mobile,num.toString());
+        SendSms.sendMSM(mobile,num.toString());
         System.out.println(num);
         return new BaseResponse(StatusCode.Success,num.toString());
     }

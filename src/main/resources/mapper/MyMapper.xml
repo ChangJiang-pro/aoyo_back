@@ -26,4 +26,12 @@
         where cc.coupon_id=c.coupon_id
         and cc.coupon_status_id=#{id}
     </select>
+    <insert id="saveCustomLicense" parameterType="aoyoCustomLicense">
+      insert into aoyo_custom_license
+      (face_birth, face_num, face_sex, back_start_date, face_nationality, back_issue, back_url, back_end_date, face_name, face_url, face_address, custom_id)
+      values (#{faceBirth},#{faceNum},#{faceSex},#{backStartDate},#{faceNationality},#{backIssue},#{backUrl},#{backEndDate},#{faceName},#{faceUrl},#{faceAddress},#{customId})
+    </insert>
+    <select id="getCustomLicenseById" resultType="aoyoCustomLicense">
+        select face_url,back_url,face_name,face_num,face_birth,face_address from aoyo_custom_license where custom_id=#{customId}
+    </select>
 </mapper>

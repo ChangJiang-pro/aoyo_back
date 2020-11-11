@@ -6,12 +6,15 @@ import com.buba.aoyo.mapper.MyMapper;
 import com.buba.aoyo.pojo.AoyoCoupon;
 import com.buba.aoyo.pojo.AoyoCustom;
 import com.buba.aoyo.pojo.AoyoCustomCoupon;
+import com.buba.aoyo.pojo.AoyoCustomLicense;
 import com.buba.aoyo.response.BaseResponse;
 import com.buba.aoyo.service.MyService;
+import com.buba.aoyo.service.UserService;
 import com.buba.aoyo.utils.Constant;
 import com.buba.aoyo.utils.EncryptUtil;
 import com.buba.aoyo.utils.StatusCode;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -24,6 +27,8 @@ public class MyServiceImpl implements MyService {
     private MyMapper myMapper;
     @Resource
     private CustomMapper customMapper;
+    @Autowired
+    private UserService userService;
 
 //    获取优惠券列表
     @Override
@@ -49,5 +54,27 @@ public class MyServiceImpl implements MyService {
     public BaseResponse getCouponListByStatus(Integer id) {
         List<AoyoCustomCoupon> list=myMapper.getCouponListByStatus(id);
         return new BaseResponse(StatusCode.Success,list);
+    }
+
+    @Override
+    public BaseResponse saveCustomLicense(AoyoCustomLicense param,HttpServletRequest request) {
+        String accessToken=request.getHeader("Ltoken");
+        String result= null;
+        try {
+            result = EncryptUtil.aesDecrypt(accessToken,Constant.TOKEN_AUTH_KEY);
+            AoyoCustom custom=userService.selCustom(JSONObject.parseObject(result).getString("userName"));
+            param.setCustomId(custom.getCustomId());
+            myMapper.saveCustomLicense(param);
+            return new BaseResponse(StatusCode.Success);
+        } catch (Exception e) {
+            return new BaseResponse(StatusCode.Fail);
+        }
+
+
+    }
+
+    @Override
+    public AoyoCustomLicense getCustomLicenseById(Integer customId) {
+        return myMapper.getCustomLicenseById(customId);
     }
 }

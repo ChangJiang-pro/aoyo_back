@@ -2,6 +2,7 @@ package com.buba.aoyo.mapper;
 
 import com.buba.aoyo.pojo.AoyoCoupon;
 import com.buba.aoyo.pojo.AoyoCustomCoupon;
+import com.buba.aoyo.pojo.AoyoCustomLicense;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -14,4 +15,8 @@ public interface MyMapper {
     int insCouponCustom(@Param("id") Integer id, @Param("customId") Integer customId);
 
     List<AoyoCustomCoupon> getCouponListByStatus(@Param("id") Integer id);
+
+    int saveCustomLicense(AoyoCustomLicense aoyoCustomLicense);
+
+    AoyoCustomLicense getCustomLicenseById(Integer customId);
 }
